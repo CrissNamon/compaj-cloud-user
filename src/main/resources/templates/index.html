@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="common :: head">
+</head>
+<nav th:insert="common :: navbar"></nav>
+<body>
+<h1>Watcher</h1>
+<div class="container">
+
+</div>
+
+<div th:replace="common :: bootstrap"></div>
+<script th:src="@{/user/js/sse.js}"></script>
+<script th:src="@{/user/js/watcher.js}"></script>
+</body>
+</html>
