@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ViewController {
 
-  @GetMapping(value = "/watch")
-  public String watchPage(Model model) {
-    log.info("Index.html");
-    return "index";
+  @GetMapping(value = "/processor")
+  public String processorPage(Model model) {
+    return "processor";
   }
 }

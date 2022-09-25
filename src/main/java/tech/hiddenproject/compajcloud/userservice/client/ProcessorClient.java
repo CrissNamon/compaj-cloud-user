@@ -13,7 +13,7 @@ import tech.hiddenproject.compajcloud.userservice.dto.ContainerEvent;
  * @author Danila Rassokhin
  */
 @ReactiveFeignClient(name = "processor-service")
-public interface TestClient {
+public interface ProcessorClient {
 
   @GetMapping("/watch")
   Flux<ContainerEvent> watch();
