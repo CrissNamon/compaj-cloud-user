@@ -1,0 +1,70 @@
+spring:
+  application:
+    name: user-service
+  main:
+    web-application-type: servlet
+  cloud:
+    bus:
+      enabled: true
+      id: config-service
+    stream:
+      kafka:
+        binder:
+          brokers: kafka1:19092
+  security:
+    oauth2:
+      resourceserver:
+        provider-uri: http://192.168.1.144:9090
+        jwt:
+          jwk-set-uri: '${spring.security.oauth2.resourceserver.provider-uri}/auth/realms/compaj/protocol/openid-connect/certs'
+          issuer-uri: '${spring.security.oauth2.resourceserver.provider-uri}/auth/realms/compaj'
+      client:
+        provider-uri: http://192.168.1.144:9090
+        provider:
+          keycloak:
+            token-uri: '${spring.security.oauth2.client.provider-uri}/auth/realms/compaj/protocol/openid-connect/token'
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            provider: keycloak
+            client-id: compaj-cloud-user
+            client-secret: DxIMsr3GpQoX1ks4IjcYSQhsWt3Uj1dV
+            authorization-grant-type: client_credentials
+            scope:
+              - openid
+              - processor
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    enabled: true
+    service-url:
+      defaultZone: http://discovery-service:8761/eureka/
+    registry-fetch-interval-seconds: 5
+  instance:
+    hostname: user-service
+
+reactive:
+  feign:
+    logger:
+      enabled: true
+    client:
+      default-to-properties: true
+      default-config: default
+      config:
+        processor-service:
+          readTimeout: 60000
+          requestInterceptors:
+            - tech.hiddenproject.compajcloud.userservice.feign.OAuthFeignInterceptor
+
+server:
+  port: 8082
+
+logging:
+  level:
+    org:
+      springframework:
+        security: TRACE
+    reactor:
+      netty: TRACE
