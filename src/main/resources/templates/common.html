@@ -1,16 +1,18 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head th:fragment="head">
   <meta charset="UTF-8"/>
   <title>Spring Boot Thymeleaf - Bootstrap WebJars</title>
-  <link th:rel="stylesheet" th:href="@{/user/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+  <link th:rel="stylesheet" th:href="@{/user/webjars/bootstrap/5.2.0/css/bootstrap.min.css} "/>
 </head>
+
 <div th:fragment="bootstrap">
-  <script th:src="@{/user/webjars/jquery/3.0.0/jquery.min.js}"></script>
-  <script th:src="@{/user/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
-  <script th:src="@{/user/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+  <script th:src="@{/user/webjars/jquery/dist/jquery.min.js}"></script>
+  <script th:src="@{/user/webjars/bootstrap/5.2.0/js/bootstrap.bundle.min.js}"></script>
 </div>
-<nav th:fragment="navbar" class="navbar fixed-top navbar-expand-lg bg-light">
+
+<nav th:fragment="navbar" class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

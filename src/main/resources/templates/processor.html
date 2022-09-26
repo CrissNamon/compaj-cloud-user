@@ -2,11 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="common :: head">
 </head>
-<nav th:insert="common :: navbar"></nav>
 <body>
-<h1>Watcher</h1>
-<div class="container">
-
+<header>
+  <nav th:insert="common :: navbar"></nav>
+</header>
+<h1 class="container">Watcher</h1>
+<div class="container-fluid" style="overflow: scroll; overflow-x: hidden; max-height: 80vh;" id="data">
 </div>
 
 <div th:replace="common :: bootstrap"></div>
